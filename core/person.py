@@ -1,4 +1,4 @@
-from abc import ABC, abstractmethod
+from abc import ABC
 from typing import Literal, TypedDict
 
 
@@ -24,7 +24,6 @@ class Person(ABC):
         self.gender = gender
         self.contact_info = contact_info
 
-    # Abstract method for polymorphism in "Nurse" and "doctor" class
-    @abstractmethod
-    def access_privileges(self):
+    # Update the contact information of a person.
+    def update_contact_info(self):
         pass
