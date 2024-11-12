@@ -1,4 +1,5 @@
 from typing import Literal
+from person import *
 
 """
 General Practitioner (Family Medicine):
@@ -19,11 +20,21 @@ Pediatrician (age < 18):
 
 
 class Doctor:
+
     def __init__(
         self,
-        specialization: Literal["Family", "Heart"] = "Family",
+        name: str,
+        age: int,
+        department: str,
+        contact_info: ContactInfo,
+        gender: Literal["Male", "Female"],
+        license_number: str,  # will be a UUID
+        specialization: Literal[
+            "General Practitioner", "Practitioner", "Cardiologist", "Surgeon"
+        ] = "General Practitioner",
         schedule: list[dict] = None,
     ) -> None:
+        super().__init__(name, age, gender, contact_info)
         self.specialization = specialization
         self.schedule = (
             schedule
@@ -38,7 +49,10 @@ class Doctor:
                 {"day": "Sun", "appointments": []},
             ]
         )
+        self.license_number = license_number
         self.max_patients_per_day = 16
+        self.max_hours_per_day = 10
+        self.department = department if department is not None else TypeError('TypeError: department is required')
 
     def view_patient_history(self) -> None:
         pass

@@ -12,6 +12,7 @@ class Patient(Person):
         insurance_details: list[dict] = None,
     ) -> None:
         super().__init__(name, age, gender, contact_info)
+
         # Initialize medical history, defaulting to an empty list if none provided
         self.medical_history = medical_history if medical_history is not None else []
 
@@ -20,8 +21,15 @@ class Patient(Person):
             insurance_details if insurance_details is not None else []
         )
 
+        # stores the patient's past appointments
+        self.appointments = []
+
     def view_appointments(self) -> None:
         pass
 
     def request_appointment(self) -> None:
+        pass
+
+    # summary of patient's medical history
+    def view_medical_history(self) -> None:
         pass
